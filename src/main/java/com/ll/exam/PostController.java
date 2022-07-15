@@ -29,12 +29,13 @@ public class PostController {
     }
 
     public void modify(Rq rq) {
+        postRepository.updateById(rq.getIntParam("id",0));
     }
 
     public void list(Rq rq) {
-        System.out.println("번호 / 작가 / 명언");
+        System.out.println("번호 / 작가 / 명언 / 등록일");
         System.out.println("----------------------");
         List<Post> posts=postRepository.findAll();
-        posts.forEach(x -> System.out.println(x.getId() + " /  " + x.getAuthor() + "  /  " + x.getContent()));
+        posts.forEach(x -> System.out.println(x.getId() + " /  " + x.getAuthor() + "  /  " + x.getContent()+ "  /  " + x.getCreatedTime()));
     }
 }

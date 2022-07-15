@@ -9,21 +9,21 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
+import static com.ll.exam.Util.FileUtil.fileWrite;
 import static com.ll.exam.Util.FileUtil.getMaxNumberFileName;
 
 public class PostRepository {
     static int ids;
-    ArrayList<Post> posts;
+    CopyOnWriteArrayList<Post> posts;
     PostService postService;
+    Scanner sc=new Scanner(System.in);
     private static PostRepository instance=new PostRepository();
     private PostRepository(){
-        posts=new ArrayList<>();
+        posts=new CopyOnWriteArrayList<>();
         init();
         postService=new PostService();
     }
@@ -36,9 +36,11 @@ public class PostRepository {
 
     Post save(String content,String author,String keyword){
         ids++;
-        Post creatPost=new Post(ids,content,author, postService.getGifUseApi(keyword));
+        String imgUrl=postService.getGifUseApi(keyword);
+        Post creatPost=new Post(ids,content,author, imgUrl);
+        creatPost.registDate();
         File file=new File(FileUtil.getFileDirPath()+"\\"+ids+".json");
-        FileUtil.fileWrite(file,creatPost);
+        fileWrite(file,creatPost);
         posts.add(creatPost);
         return creatPost;
     }
@@ -103,6 +105,7 @@ public class PostRepository {
                 String[] ars = str.split(",");
                 int index = Integer.parseInt(ars[0].trim());
                 Post post = new Post(index, ars[1].trim(), ars[2].trim(),ars[3].trim());
+                post.setCreatedTime(ars[4].trim());
                 this.posts.add(post);
                 fileStream.close();
                 System.out.println("파일 : "+file+" 불러오기 완료!!");
@@ -124,5 +127,29 @@ public class PostRepository {
         }
         return posts.stream()
                 .sorted(Comparator.comparing(Post::getId).reversed()).toList();
+    }
+
+    public Post updateById(int id) {
+        if(id==0){
+            System.out.println("id를 입력해주세요.");
+            return null;
+        }
+        Optional<Post> fixPost = posts.stream()
+                .filter(x -> x.getId()==id)
+                .findFirst();
+        deleteById(id);
+        System.out.println("기존 명언 : " + fixPost.get().getContent());
+        System.out.print("새로운 명언 : ");
+        String newContent = sc.nextLine().trim();
+        System.out.print("새로운 명언에 대한 키워드를 입력해주세요 : ");
+        String newKeyword = sc.nextLine().trim();
+        System.out.println(newContent);
+        Post creatPost=new Post(fixPost.get().getId(),newContent,fixPost.get().getAuthor(), postService.getGifUseApi(newKeyword));
+        creatPost.setCreatedTime(fixPost.get().getCreatedTime());
+        ids++;
+        File file=new File(FileUtil.getFileDirPath()+"\\"+ids+".json");
+        fileWrite(file,creatPost);
+        posts.add(creatPost);
+        return creatPost;
     }
 }

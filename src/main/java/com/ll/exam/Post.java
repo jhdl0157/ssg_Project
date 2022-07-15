@@ -19,7 +19,6 @@ public class Post {
         this.content=content;
         this.author=author;
         this.imgUrl=imgUrl;
-        this.createdTime=LocalDate.now();
     }
     @Override
     public String toString() {
@@ -46,5 +45,15 @@ public class Post {
                 .formatted(id, content, author,imgUrl,createdTime.toString())
                 .trim();
     }
+    public void registDate (){
+        this.createdTime=LocalDate.now();
+    }
+    public void setCreatedTime(String date){
+        this.createdTime= LocalDate.parse(date);
+    }
+    public void setCreatedTime(LocalDate date){
+        this.createdTime= date;
+    }
+
 
 }
