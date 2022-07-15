@@ -11,7 +11,7 @@
  
  ### 등록시 명언에 어울리는 키워드를 입력시 gif파일 이미지 생성
  ![image](https://user-images.githubusercontent.com/72914519/179162549-29b94d73-d263-4025-8a4a-aac0b1bf9caa.png)
-  [이미지 링크 URL]: https://lynmp.com](https://media2.giphy.com/media/du4D0b0HWgxGg/giphy.gif?cid=9a22a94e5j3i73wt14op4d31tpuyq0gm0m6jnqjem4iuxqi0&rid=giphy.gif&ct=g
+  [이미지 링크 URL]: https://media2.giphy.com/media/du4D0b0HWgxGg/giphy.gif?cid=9a22a94e5j3i73wt14op4d31tpuyq0gm0m6jnqjem4iuxqi0&rid=giphy.gif&ct=g
  
 ###  등록시 등록 일자 추가   ```"createdTime": "2022-07-15"```
  
