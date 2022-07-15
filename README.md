@@ -24,6 +24,8 @@
 최종 결과물
 
 <img src="https://user-images.githubusercontent.com/72914519/179165986-9c712b46-9778-4060-868e-9e060d853f9a.png" width="50%" height="50%" />
+
+[codepen 링크] : https://codepen.io/jhdl0157/pen/NWYbBXa?editors=0010
 <p>
 사용한 라이브러리
 
