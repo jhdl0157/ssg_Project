@@ -23,7 +23,8 @@
 
 
 최종 결과물
-<img src="https://user-images.githubusercontent.com/72914519/179173650-d40addf4-61ab-4742-9b6c-dea16c3eb359.png" width="50%" height="50%" />
+
+<img src="https://user-images.githubusercontent.com/72914519/179173650-d40addf4-61ab-4742-9b6c-dea16c3eb359.png" width="40%" height="40%" />
 
 [codepen 링크] : https://codepen.io/jhdl0157/pen/NWYbBXa?editors=0010
 <p>
