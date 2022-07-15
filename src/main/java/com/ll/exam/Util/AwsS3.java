@@ -12,6 +12,7 @@ import com.amazonaws.services.s3.model.CopyObjectRequest;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.ll.exam.ApiKey;
 
 import java.io.File;
 import java.io.InputStream;
@@ -20,8 +21,8 @@ public class AwsS3 {
 
     //Amazon-s3-sdk
     private AmazonS3 s3Client;
-    final private String accessKey = "AKIA33DBN5SFL3YPTZ55";
-    final private String secretKey = "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";
+    final private String accessKey = ApiKey.S3_ACCESS_KEY.getKey();
+    final private String secretKey = ApiKey.S3_SECRET_KEY.getKey();
     private Regions clientRegion = Regions.AP_NORTHEAST_2;
     private String bucket = "ssgproject";
 
