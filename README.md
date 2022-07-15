@@ -23,11 +23,12 @@
 
 
 최종 결과물
-
-<img src="https://user-images.githubusercontent.com/72914519/179165986-9c712b46-9778-4060-868e-9e060d853f9a.png" width="50%" height="50%" />
+<img src="https://user-images.githubusercontent.com/72914519/179173650-d40addf4-61ab-4742-9b6c-dea16c3eb359.png" width="50%" height="50%" />
 
 [codepen 링크] : https://codepen.io/jhdl0157/pen/NWYbBXa?editors=0010
 <p>
 사용한 라이브러리
 
-```giphy4j(1.0.1)``` , ```aws-java-sdk-s3(1.11.901)```
+```giphy4j(1.0.1)``` API_KEY 받기 https://developers.giphy.com/docs/api
+
+```aws-java-sdk-s3(1.11.901)``` AWS IAM KEY 발급받기
