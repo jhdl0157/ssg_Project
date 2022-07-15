@@ -1,30 +1,44 @@
 [ 
  {
-  "id" : "2",
-  "content" : "그만좀 먹어",
-  "author" : "징징이",
-  "imgUrl" : "https://media2.giphy.com/media/3oFyCYXQyKYDrooV44/giphy.gif?cid=9a22a94ep5lwamcp2nxg0tsr7z307fvmk88le6u2i0um6eyl&rid=giphy.gif&ct=g" ,
+  "id" : "1",
+  "content" : "내일은 월요일",
+  "author" : "직장인",
+  "imgUrl" : "https://media2.giphy.com/media/10fxZavhBFXsUE/giphy.gif?cid=9a22a94emqo2ey7gzkycfi1jjijsrn37d18dih09znqus7wv&rid=giphy.gif&ct=g" ,
   "createdTime" : "2022-07-15" 
 },
 {
-  "id" : "1",
-  "content" : "11111111",
-  "author" : "2222",
-  "imgUrl" : "https://media0.giphy.com/media/hOzfvZynn9AK4/giphy.gif?cid=9a22a94em4dpxrpamv38kivmfr8u3i7j8peg8zusmqv38r4b&rid=giphy.gif&ct=g" ,
+  "id" : "2",
+  "content" : "이봐 징징이",
+  "author" : "집게사장",
+  "imgUrl" : "https://media1.giphy.com/media/UvOcKPHrkKSLm/giphy.gif?cid=9a22a94e36mymvkkz7oox2qzcvnbmiiv7chukvmz1bxtvzzn&rid=giphy.gif&ct=g" ,
+  "createdTime" : "2022-07-15" 
+},
+{
+  "id" : "3",
+  "content" : "그래도 지구는 돈다",
+  "author" : "갈릴레오 갈릴레이",
+  "imgUrl" : "https://media3.giphy.com/media/9JgeSP0jlRAVBOG9FD/giphy.gif?cid=9a22a94e9enr0u5pn3v7l7yxi73joumpb0k4axbbv7rdrv4q&rid=giphy.gif&ct=g" ,
   "createdTime" : "2022-07-15" 
 },
 {
   "id" : "4",
-  "content" : "123333",
-  "author" : "33333",
-  "imgUrl" : "https://media1.giphy.com/media/dVTnzQa3xUlKo/giphy.gif?cid=9a22a94e8wv1fzph45yyke642gxwk5niqd66qqun3hzldp2p&rid=giphy.gif&ct=g" ,
+  "content" : "나는 천체의 움직임은 예측할 수 있지만, 군중들의 광기는 도무지 예측할수 없다",
+  "author" : "아이작 뉴턴",
+  "imgUrl" : "https://media2.giphy.com/media/cjPKxqUHatgGf3ln14/giphy.gif?cid=9a22a94eeeybe11yo61bsj0tgzco0rthyhraofw8jen4m7l8&rid=giphy.gif&ct=g" ,
   "createdTime" : "2022-07-15" 
 },
 {
   "id" : "5",
-  "content" : "내일은 월요일",
-  "author" : "회사원",
-  "imgUrl" : "https://media3.giphy.com/media/tqj4m9BRURayxQAIW9/giphy.gif?cid=9a22a94e2sgsopqcfnzfwegx0ou164sndjpnfoefnttx0qz0&rid=giphy.gif&ct=g" ,
+  "content" : "알려줘 구스..",
+  "author" : "매버릭",
+  "imgUrl" : "https://media4.giphy.com/media/l1KVc5abyWeXsxbwY/giphy.gif?cid=9a22a94e63x9putl85by57ysq2i5iaybqrvc0uafhg97g7im&rid=giphy.gif&ct=g" ,
+  "createdTime" : "2022-07-15" 
+},
+{
+  "id" : "6",
+  "content" : "알려줘 구스..",
+  "author" : "매버릭",
+  "imgUrl" : "https://media2.giphy.com/media/MEux9GCIiClvrXTim6/giphy.gif?cid=9a22a94enqtj0aqcozmwh2ovtsr0rsasf7n3db8crxg4eud5&rid=giphy.gif&ct=g" ,
   "createdTime" : "2022-07-15" 
 }
 ]

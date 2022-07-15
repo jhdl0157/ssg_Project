@@ -41,7 +41,6 @@ public class AwsS3 {
         }
     }
 
-    //aws S3 client 생성
     private void createS3Client() {
 
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
@@ -63,8 +62,6 @@ public class AwsS3 {
 
         uploadToS3(new PutObjectRequest(this.bucket, key, is, objectMetadata));
     }
-
-    //PutObjectRequest는 Aws S3 버킷에 업로드할 객체 메타 데이터와 파일 데이터로 이루어져있다.
     private void uploadToS3(PutObjectRequest putObjectRequest) {
 
         try {
@@ -79,28 +76,6 @@ public class AwsS3 {
             e.printStackTrace();
         }
     }
-
-    public void copy(String orgKey, String copyKey) {
-        try {
-            //Copy 객체 생성
-            CopyObjectRequest copyObjRequest = new CopyObjectRequest(
-                    this.bucket,
-                    orgKey,
-                    this.bucket,
-                    copyKey
-            );
-            //Copy
-            this.s3Client.copyObject(copyObjRequest);
-
-            System.out.println(String.format("Finish copying [%s] to [%s]", orgKey, copyKey));
-
-        } catch (AmazonServiceException e) {
-            e.printStackTrace();
-        } catch (SdkClientException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void delete(String key) {
         try {
             //Delete 객체 생성
@@ -115,6 +90,4 @@ public class AwsS3 {
             e.printStackTrace();
         }
     }
-
-
 }
