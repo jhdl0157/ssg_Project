@@ -10,6 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.ll.exam.Util.FileUtil.getMaxNumberFileName;
 
@@ -78,14 +82,6 @@ public class PostRepository {
         return -1;
     }
 
-
-
-
-
-
-
-
-
     void init() {
         String[] files=getFileList();
         System.out.println("현재 작업 경로: " + FileUtil.getFileDirPath());
@@ -119,5 +115,14 @@ public class PostRepository {
     String[] getFileList() {
         File dir = new File(FileUtil.getFileDirPath());
         return dir.list();
+    }
+
+    public List<Post> findAll() {
+        if (posts.isEmpty()) {
+            System.out.println("게시글이 하나도 없습니다");
+            return null ;
+        }
+        return posts.stream()
+                .sorted(Comparator.comparing(Post::getId).reversed()).toList();
     }
 }
