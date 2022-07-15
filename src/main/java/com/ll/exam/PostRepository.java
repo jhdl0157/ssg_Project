@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
 
 import static com.ll.exam.Util.FileUtil.fileWrite;
 import static com.ll.exam.Util.FileUtil.getMaxNumberFileName;
@@ -59,6 +58,7 @@ public class PostRepository {
                 }
             }
         }
+        System.out.printf("%d번 명언은 존재하지 않습니다.\n",index);
     }
     int findByIndexId(final String[] files, final int index) {
         for (String file : files) {
@@ -84,6 +84,59 @@ public class PostRepository {
         return -1;
     }
 
+
+    public List<Post> findAll() {
+        if (posts.isEmpty()) {
+            System.out.println("게시글이 하나도 없습니다");
+            return null ;
+        }
+        return posts.stream()
+                .sorted(Comparator.comparing(Post::getId).reversed()).toList();
+    }
+
+    public Post updateById(int id) {
+        if(id==0){
+            System.out.println("id를 입력해주세요.");
+            return null;
+        }
+        Optional<Post> fixPost = posts.stream()
+                .filter(x -> x.getId()==id)
+                .findFirst();
+        if(fixPost.isEmpty()){
+            System.out.printf("%d번 명언은 존재하지 않습니다.\n",id);
+        }
+        deleteById(id);
+        System.out.println("기존 명언 : " + fixPost.get().getContent());
+        System.out.print("새로운 명언 : ");
+        String newContent = sc.nextLine().trim();
+        System.out.print("새로운 명언에 대한 키워드를 입력해주세요 : ");
+        String newKeyword = sc.nextLine().trim();
+        System.out.println(newContent);
+        Post creatPost=new Post(fixPost.get().getId(),newContent,fixPost.get().getAuthor(), postService.getGifUseApi(newKeyword));
+        creatPost.setCreatedTime(fixPost.get().getCreatedTime());
+        ids++;
+        File file=new File(FileUtil.getFileDirPath()+"\\"+ids+".json");
+        fileWrite(file,creatPost);
+        posts.add(creatPost);
+        return creatPost;
+    }
+
+    public void makeJson() {
+        StringBuilder sb=new StringBuilder();
+        sb.append("[ \n ");
+        for(int i=0;i<posts.size();i++){
+            sb.append(posts.get(i).toString());
+            if(i<posts.size()-1) {
+                sb.append(",");
+                sb.append("\n");
+            }
+        }
+        sb.append("\n]");
+        Path currentPath = Paths.get("");
+        String path = currentPath.toAbsolutePath()+"/src/main/java/com/ll/exam/";
+        File dataJson=new File(path+"data.json");
+        fileWrite(dataJson,sb.toString());
+    }
     void init() {
         String[] files=getFileList();
         System.out.println("현재 작업 경로: " + FileUtil.getFileDirPath());
@@ -118,38 +171,5 @@ public class PostRepository {
     String[] getFileList() {
         File dir = new File(FileUtil.getFileDirPath());
         return dir.list();
-    }
-
-    public List<Post> findAll() {
-        if (posts.isEmpty()) {
-            System.out.println("게시글이 하나도 없습니다");
-            return null ;
-        }
-        return posts.stream()
-                .sorted(Comparator.comparing(Post::getId).reversed()).toList();
-    }
-
-    public Post updateById(int id) {
-        if(id==0){
-            System.out.println("id를 입력해주세요.");
-            return null;
-        }
-        Optional<Post> fixPost = posts.stream()
-                .filter(x -> x.getId()==id)
-                .findFirst();
-        deleteById(id);
-        System.out.println("기존 명언 : " + fixPost.get().getContent());
-        System.out.print("새로운 명언 : ");
-        String newContent = sc.nextLine().trim();
-        System.out.print("새로운 명언에 대한 키워드를 입력해주세요 : ");
-        String newKeyword = sc.nextLine().trim();
-        System.out.println(newContent);
-        Post creatPost=new Post(fixPost.get().getId(),newContent,fixPost.get().getAuthor(), postService.getGifUseApi(newKeyword));
-        creatPost.setCreatedTime(fixPost.get().getCreatedTime());
-        ids++;
-        File file=new File(FileUtil.getFileDirPath()+"\\"+ids+".json");
-        fileWrite(file,creatPost);
-        posts.add(creatPost);
-        return creatPost;
     }
 }

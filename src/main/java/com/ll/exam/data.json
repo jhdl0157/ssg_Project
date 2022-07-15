@@ -1,0 +1,16 @@
+[ 
+ {
+ "id" : "2",
+ "content" : "그만좀 먹어",
+ "author" : "징징이",
+ "imgUrl" : "https://media2.giphy.com/media/3oFyCYXQyKYDrooV44/giphy.gif?cid=9a22a94ep5lwamcp2nxg0tsr7z307fvmk88le6u2i0um6eyl&rid=giphy.gif&ct=g" ,
+ "createdTime" : "2022-07-15" 
+},
+{
+ "id" : "1",
+ "content" : "11111111",
+ "author" : "2222",
+ "imgUrl" : "https://media0.giphy.com/media/hOzfvZynn9AK4/giphy.gif?cid=9a22a94em4dpxrpamv38kivmfr8u3i7j8peg8zusmqv38r4b&rid=giphy.gif&ct=g" ,
+ "createdTime" : "2022-07-15" 
+}
+]

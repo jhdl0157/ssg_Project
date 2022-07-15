@@ -41,6 +41,17 @@ public class FileUtil {
             e.printStackTrace();
         }
     }
+    public static void fileWrite(File file, String result) {
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(result);
+            fileWriter.close();
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private static String getCurrentPath(){
         Path currentPath = Paths.get("");
         return String.valueOf(currentPath.toAbsolutePath());

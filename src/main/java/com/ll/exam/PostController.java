@@ -1,6 +1,5 @@
 package com.ll.exam;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,5 +36,9 @@ public class PostController {
         System.out.println("----------------------");
         List<Post> posts=postRepository.findAll();
         posts.forEach(x -> System.out.println(x.getId() + " /  " + x.getAuthor() + "  /  " + x.getContent()+ "  /  " + x.getCreatedTime()));
+    }
+
+    public void buildJson() {
+        postRepository.makeJson();
     }
 }
