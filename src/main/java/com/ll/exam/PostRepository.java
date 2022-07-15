@@ -5,6 +5,8 @@ import com.ll.exam.Util.JsonParse;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,10 +16,12 @@ import static com.ll.exam.Util.FileUtil.getMaxNumberFileName;
 public class PostRepository {
     static int ids;
     ArrayList<Post> posts;
+    PostService postService;
     private static PostRepository instance=new PostRepository();
     private PostRepository(){
         posts=new ArrayList<>();
         init();
+        postService=new PostService();
     }
     public static PostRepository getInstance(){
         if(instance==null){
@@ -28,17 +32,63 @@ public class PostRepository {
 
     Post save(String content,String author,String keyword){
         ids++;
-        String imgUrl=ImageApi.FindImage(keyword);
-        Post creatPost=new Post(ids,content,author,imgUrl);
-        posts.add(creatPost);
-        File file=new File(FileUtil.getFilePath()+"\\"+ids+".json");
+        Post creatPost=new Post(ids,content,author, postService.getGifUseApi(keyword));
+        File file=new File(FileUtil.getFileDirPath()+"\\"+ids+".json");
         FileUtil.fileWrite(file,creatPost);
+        posts.add(creatPost);
         return creatPost;
     }
+    public void deleteById(int index) {
+        for (Post post : posts) {
+            if (post.getId() == index) {
+                posts.remove(post);
+                Path path = Paths.get(FileUtil.getFilePath() + findByIndexId(getFileList(), index) + ".json");
+                try {
+                    Files.delete(path);
+                    System.out.println(path+"삭제 성공!!");
+                } catch (IOException e) {
+                    System.out.println(path+"삭제 실패!!");
+                    e.printStackTrace();
+                    return;
+                }
+            }
+        }
+    }
+    int findByIndexId(final String[] files, final int index) {
+        for (String file : files) {
+            try {
+                String filePath = FileUtil.getFilePath() + file;
+                FileInputStream fileStream = null;
+                fileStream = new FileInputStream(filePath);
+                byte[] readBuffer = new byte[fileStream.available()];
+                while (fileStream.read(readBuffer) != -1) {
+                }
+                fileStream.close();
+                String result = new String(readBuffer);
+                String str = JsonParse.jsonToString(result);
+                String[] ars = str.split(",");
+                if (Integer.parseInt(ars[0].trim()) == index) {
+                    return Integer.parseInt(file.replace(".json", "").trim());
+                }
+                fileStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return -1;
+    }
+
+
+
+
+
+
+
+
 
     void init() {
         String[] files=getFileList();
-        System.out.println("현재 작업 경로: " + FileUtil.getFilePath());
+        System.out.println("현재 작업 경로: " + FileUtil.getFileDirPath());
         System.out.println("파일에서 자료 불러오는중...");
         if (files.length == 0) {
             System.out.println("불러올 파일이 없습니다.");
@@ -46,7 +96,7 @@ public class PostRepository {
         }
         for (String file : files) {
             try {
-                String filePath = FileUtil.getFilePath()+"\\" + file;
+                String filePath = FileUtil.getFileDirPath()+"\\" + file;
                 FileInputStream fileStream = null;
                 fileStream = new FileInputStream(filePath);
                 byte[] readBuffer = new byte[fileStream.available()];
@@ -67,9 +117,7 @@ public class PostRepository {
         }
     }
     String[] getFileList() {
-        File dir = new File(FileUtil.getFilePath());
+        File dir = new File(FileUtil.getFileDirPath());
         return dir.list();
     }
-
-
 }

@@ -11,16 +11,20 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class FileUtil {
+    private static final String DIR_PATH="\\src\\main\\java\\com\\ll\\exam\\data";
+    private static final String FILE_PATH="\\src\\main\\java\\com\\ll\\exam\\data\\";
     public static void mkdir(String path) {
         File dir = new File(path);
         dir.mkdirs();
     }
 
-    public static String getFilePath(){
-        Path currentPath = Paths.get("");
-        String path = currentPath.toAbsolutePath()+"\\src\\main\\java\\com\\ll\\exam\\data";
-        return path;
+    public static String getFileDirPath(){
+        return getCurrentPath()+DIR_PATH;
     }
+    public static String getFilePath(){
+        return getCurrentPath()+FILE_PATH;
+    }
+
     public static int getMaxNumberFileName(final String[] files) {
         return Arrays.stream(files).mapToInt(file -> Integer.parseInt(file.replace(".json", "").trim()))
                 .max().orElse(0);
@@ -36,5 +40,9 @@ public class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private static String getCurrentPath(){
+        Path currentPath = Paths.get("");
+        return String.valueOf(currentPath.toAbsolutePath());
     }
 }

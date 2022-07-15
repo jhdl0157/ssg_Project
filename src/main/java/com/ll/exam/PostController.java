@@ -16,13 +16,14 @@ public class PostController {
         String content = sc.nextLine().trim();
         System.out.print("작가 : ");
         String author = sc.nextLine().trim();
-        System.out.print("명언에 어울리는 키워드(한/영 모두 가능) : ");
+        System.out.print("명언에 어울리는 키워드 입력(한/영 모두 가능) : ");
         String keyword = sc.nextLine().trim();
         Post post=postRepository.save(content,author,keyword);
         System.out.println(post.toString());
     }
 
     public void remove(Rq rq) {
+        postRepository.deleteById(rq.getIntParam("id",0));
     }
 
     public void modify(Rq rq) {

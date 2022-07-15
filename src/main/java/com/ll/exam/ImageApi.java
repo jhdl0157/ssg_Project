@@ -9,7 +9,6 @@ public class ImageApi {
     static String FindImage(String keyword)  {
         Giphy giphy=new Giphy(API_KEY);
         int randomInt= (int) (Math.random()*10);
-        System.out.println(randomInt);
         try {
             SearchFeed feed = giphy.search(keyword, 1, randomInt);
             return feed.getDataList().get(0).getImages().getOriginal().getUrl();
