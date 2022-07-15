@@ -34,7 +34,12 @@ public class FileDBTest {
     void 파일_만들어보기(){
         PostRepository postRepository=PostRepository.getInstance();
         Post post=new Post(1,"test","name","happy");
-
+    }
+    @Test
+    void getMaxNumberFileName() {
+        PostRepository postRepository=PostRepository.getInstance();
+        String[] lists=postRepository.getFileList();
+        assertEquals(0,FileUtil.getMaxNumberFileName(lists));
     }
 
 }

@@ -44,8 +44,10 @@ public class PostRepository {
         return creatPost;
     }
     public void deleteById(int index) {
+        boolean flag=false;
         for (Post post : posts) {
             if (post.getId() == index) {
+                flag=true;
                 posts.remove(post);
                 Path path = Paths.get(FileUtil.getFilePath() + findByIndexId(getFileList(), index) + ".json");
                 try {
@@ -58,7 +60,9 @@ public class PostRepository {
                 }
             }
         }
-        System.out.printf("%d번 명언은 존재하지 않습니다.\n",index);
+        if(!flag){
+            System.out.printf("%d번 명언은 존재하지 않습니다.\n",index);
+        }
     }
     int findByIndexId(final String[] files, final int index) {
         for (String file : files) {
@@ -88,7 +92,6 @@ public class PostRepository {
     public List<Post> findAll() {
         if (posts.isEmpty()) {
             System.out.println("게시글이 하나도 없습니다");
-            return null ;
         }
         return posts.stream()
                 .sorted(Comparator.comparing(Post::getId).reversed()).toList();
