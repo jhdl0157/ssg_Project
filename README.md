@@ -17,3 +17,14 @@
 ###  빌드시에  data.json 파일을 업데이트하기엔 번거로운 작업 git add && commit && push 생략하고 자동화(S3에 업로드)
  ![image](https://user-images.githubusercontent.com/72914519/179163084-06888817-9549-4b98-8076-be4b43f72890.png)
 [data.json 링크] : [https://ssgproject.s3.ap-northeast-2.amazonaws.com/data.json]
+
+하지만 코드 팬에서 s3링크를 읽지 못한다.
+
+
+최종 결과물
+
+<img src="https://user-images.githubusercontent.com/72914519/179165986-9c712b46-9778-4060-868e-9e060d853f9a.png" width="50%" height="50%" />
+<p>
+사용한 라이브러리
+
+```giphy4j(1.0.1)``` , ```aws-java-sdk-s3(1.11.901)```
