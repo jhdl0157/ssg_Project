@@ -1,5 +1,7 @@
 package com.ll.exam;
 
+import com.ll.exam.Util.Rq;
+
 import java.util.Scanner;
 
 public class App {

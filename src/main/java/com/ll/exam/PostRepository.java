@@ -136,6 +136,7 @@ public class PostRepository {
         String path = currentPath.toAbsolutePath()+"/src/main/java/com/ll/exam/";
         File dataJson=new File(path+"data.json");
         fileWrite(dataJson,sb.toString());
+        postService.uploadS3(dataJson);
     }
     void init() {
         String[] files=getFileList();
