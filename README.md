@@ -1,5 +1,8 @@
 ## 파일입출력을 통한 게시판 구현하기
 
+### [결과물 보러가기] : https://codepen.io/jhdl0157/pen/NWYbBXa?editors=0010
+
+
  ### 기능
  1. 등록
  2. 삭제
@@ -26,7 +29,6 @@
 
 <img src="https://user-images.githubusercontent.com/72914519/179173650-d40addf4-61ab-4742-9b6c-dea16c3eb359.png" width="40%" height="40%" />
 
-[codepen 링크] : https://codepen.io/jhdl0157/pen/NWYbBXa?editors=0010
 <p>
 사용한 라이브러리
 
