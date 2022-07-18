@@ -1,6 +1,6 @@
 ## 파일입출력을 통한 게시판 구현하기
 
-### [결과물 보러가기] : https://codepen.io/jhdl0157/pen/NWYbBXa?editors=0010
+### [결과물 보러가기] : https://codepen.io/jhdl0157/full/NWYbBXa
 
 
  ### 기능
